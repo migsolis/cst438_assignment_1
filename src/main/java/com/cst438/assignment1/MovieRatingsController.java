@@ -26,21 +26,17 @@ public class MovieRatingsController {
 	// Validates submitted form, returns form if validation fails or stores new rating in database
 	// and displays all movie ratings.
 	@PostMapping("/movies/new")
-	public String processRatingForm(@Valid MovieRating movieRating, BindingResult result,
-			Model model) {
+	public String processRatingForm(@Valid MovieRating movieRating, 
+			BindingResult result, Model model) {
 		
 		if (result.hasErrors()) {
-			System.out.println(result);
 			return "rating_form";
 		}
 		
 		// Set rating date
 		movieRating.setDate(Instant.now());
 		ratingRepository.save(movieRating);
-		
-		Iterable<MovieRating> ratings = ratingRepository.findAllMovieRatingsOrderByTitleDateDesc();
-		model.addAttribute("ratings", ratings);
-		return "view_ratings";
+		return "redirect:/movies";
 	}
 	
 	// Displays rating form

@@ -33,14 +33,13 @@ public class MovieRating {
 	private Instant date;
 	
 	public MovieRating() {
-		id = null;
-		title = null;
+		id = 0L;
+		title = "";
 		rating = 0;
-		user = null;
+		user = "";
 		date = null;
 	}
 	
-
 	public MovieRating(Long id, String title, int rating, String user, Instant date) {
 		super();
 		this.id = id;
@@ -49,7 +48,6 @@ public class MovieRating {
 		this.user = user;
 		this.date = date;
 	}
-
 
 	public Long getId() {
 		return id;
