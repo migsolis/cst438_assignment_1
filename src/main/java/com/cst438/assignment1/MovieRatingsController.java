@@ -36,6 +36,7 @@ public class MovieRatingsController {
 		// Set rating date
 		movieRating.setDate(Instant.now());
 		ratingRepository.save(movieRating);
+		
 		return "redirect:/movies";
 	}
 	
